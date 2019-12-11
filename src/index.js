@@ -33,7 +33,7 @@ function makeDog(dog) {
 } 
 
 
-// Challenge 2 
+// Challenge 2 AND Challenge 3 
 
  function getBreeds() {
  	fetch('https://dog.ceo/api/breeds/list/all')
@@ -45,13 +45,22 @@ function makeDog(dog) {
 
  function outputBreeds(dogBreeds) {
  	let arrayOfBreeds = Object.keys(dogBreeds.message)
-
  	let ulEl = document.querySelector("#dog-breeds")
-
  	arrayOfBreeds.forEach(breed => {
  		let breedEl = document.createElement("li")
  		breedEl.innerText = breed
- 		ulEl.appendChild(breedEl)
+         ulEl.appendChild(breedEl)
+         breedEl.addEventListener("click" , changeColor)
  	})
  }
+
+
+ function changeColor(event) {
+    event.target.style.color =  "red" 
+ }
+
+
+
+
+
 
