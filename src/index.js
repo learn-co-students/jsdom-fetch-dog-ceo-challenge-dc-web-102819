@@ -77,23 +77,45 @@ function filterList(event) {
   let list = document.getElementById("dog-breeds")
   let lis = list.children
 
-  i = 0
-  while (i < lis.length) {
-    lis[i].style.visibility = "visible"
+  let liArray = Array.from(lis)
 
-    if (lis[i].innerText.charAt(0) !== letter && lis[i].style.visibility !== "hidden") {
-      lis[i].style.visibility = "hidden"
-      lis[i].parentNode.appendChild(lis[i])
-    }
-    else if (lis[i].innerText.charAt(0) === letter)
-      { lis[i].style.visibility = "visible"
-      i++
-    } else {
-    i++
-  }
-  }
+  debugger
 
-  }
+  goodElements = liArray.filter(li => li.innerText.charAt(0) === letter)
+
+  debugger
+
+  badElements = liArray.filter(li => li.innerText.charAt(0) !== letter)
+
+  goodElements.forEach ( li => {
+    li.style.display = "list-item"
+  })
+
+  badElements.forEach ( li => {
+    li.style.display = "none"
+  })
+
+
+  debugger
+
+
+
+  // i = 0
+  // while (i < lis.length) {
+  //   lis[i].style.visibility = "visible"
+  //
+  //   if (lis[i].innerText.charAt(0) !== letter && lis[i].style.visibility !== "hidden") {
+  //     lis[i].style.visibility = "hidden"
+  //     lis[i].parentNode.appendChild(lis[i])
+  //   }
+  //   else if (lis[i].innerText.charAt(0) === letter)
+  //     { lis[i].style.visibility = "visible"
+  //     i++
+  //   } else {
+  //   i++
+  //   }
+  // }
+}
 
   // for (let i = 0; i < lis.length; i++) {
   //   lis[i].style.visibility = "visible"
