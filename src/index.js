@@ -6,6 +6,7 @@ console.log('%c HI', 'color: firebrick')
 document.addEventListener("DOMContentLoaded", function() {
     fetchdogs() 
     getBreeds()
+    selectListener() 
      
   
 })
@@ -54,13 +55,33 @@ function makeDog(dog) {
  	})
  }
 
-
  function changeColor(event) {
     event.target.style.color =  "red" 
  }
 
 
+ // challenge 4 
 
 
+ function selectListener() {
+    const dropdown = document.querySelector("#breed-dropdown")
+    dropdown.addEventListener('change', outputBreedList)
+ }
+
+
+ function outputBreedList(event){
+    
+      let letter = event.target.value 
+      let allBreeds = document.querySelector("ul")
+      for (i = 0 ; i < allBreeds.children.length ; i++) {
+          allBreeds.children[i].style.display = "list-item"
+        if (allBreeds.children[i].innerText[0] === letter) {   
+
+        } else {
+            allBreeds.children[i].style.display= "none"
+        }
+      }
+ 
+ }
 
 
