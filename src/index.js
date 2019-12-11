@@ -4,8 +4,8 @@ console.log('%c HI', 'color: firebrick')
 // Challenge 1 
 
 document.addEventListener("DOMContentLoaded", function() {
-
     fetchdogs() 
+    getBreeds()
      
   
 })
@@ -24,13 +24,34 @@ function fetchdogs() {
 
 function makeDog(dog) {
     let dogcontainer = document.querySelector("#dog-image-container")
-    let dogdiv = document.createElement("div")
-    dogcontainer.appendChild(dogdiv) 
+    // let dogdiv = document.createElement("div")
+    // dogcontainer.appendChild(dogdiv) 
     let dogimage = document.createElement("img") 
     dogimage.src = dog
-    dogdiv.appendChild(dogimage) 
+    dogcontainer.appendChild(dogimage) 
+    dogimage.style.height = "200px"
 } 
 
 
 // Challenge 2 
+
+ function getBreeds() {
+ 	fetch('https://dog.ceo/api/breeds/list/all')
+ 	.then(response => response.json())
+ 	.then(dogBreeds =>{
+  		outputBreeds(dogBreeds)
+ 	})
+ }
+
+ function outputBreeds(dogBreeds) {
+ 	let arrayOfBreeds = Object.keys(dogBreeds.message)
+
+ 	let ulEl = document.querySelector("#dog-breeds")
+
+ 	arrayOfBreeds.forEach(breed => {
+ 		let breedEl = document.createElement("li")
+ 		breedEl.innerText = breed
+ 		ulEl.appendChild(breedEl)
+ 	})
+ }
 
