@@ -16,13 +16,20 @@ function filterBreed(event){
     let dd = document.getElementById("breed-dropdown")
     let input = dd.value
     console.log(input)
-
+   
     // pull the full list of dog breeds
-   let fullList = document.getElementsByTagName("li")
-    debugger
-    let filtered = fullList.filter(breed => breed.indexOf(input) === 0)
+    let fullList = document.getElementsByTagName("li")
+    let fullName = [ ]
+    for( var i = 0 ; i < fullList.length ; i ++){ 
+        let name = fullList[i] = fullList[i].innerText 
+        fullName.push(name) }
+    
+    let filtered = fullName.filter(breed => breed.indexOf(input) === 0)
     console.log(filtered)
-    debugger
+
+    filtered.forEach((breed) => {
+        listBreed(breed)
+    })
 }
 
 function renderDog(imgUrl){
@@ -31,7 +38,7 @@ function renderDog(imgUrl){
     container.appendChild(divide)
     let dogImage = document.createElement("img")
     dogImage.src = imgUrl
-    dogImage.style.width = '100'
+    dogImage.style.width = '500px'
     divide.appendChild(dogImage)
 }
 
@@ -49,8 +56,8 @@ function changeColor(event){
     let liEl = event.currentTarget
     // let liId = document.getElementById("#dog-breeds")
     // debugger
-    let change = "green"
-    if (liEl.style.color == change){
+    let change = "#" + Math.floor(Math.random()*16777215).toString(16);
+    if (liEl.style.color !== "black"){
         liEl.style.color = "black"
     }
     else{
