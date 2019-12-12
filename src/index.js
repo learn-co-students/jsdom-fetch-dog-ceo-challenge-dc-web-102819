@@ -25,9 +25,11 @@ document.addEventListener("DOMContentLoaded",function(){
 //    const result = array.filter(x => x.charAt(0) === getSelectDown)
 //    return result
 // }
+
 function filterBreed(event){
     let ulEl = document.getElementsByClassName("#dog-breeds")
     let dd = document.getElementById("breed-dropdown")
+    var TextElements = document.getElementsByTagName("li");
     let input = dd.value
     console.log(input)
    
@@ -40,7 +42,11 @@ function filterBreed(event){
     
     let filtered = fullName.filter(breed => breed.indexOf(input) === 0)
     console.log(filtered)
+    
 
+    for (var i = 0; i < TextElements.length; i++) {
+        TextElements[i].style.display = "none";
+    }
     filtered.forEach((breed) => {
         listBreed(breed)
     })
@@ -53,11 +59,7 @@ function renderDog(imgUrl){
     container.appendChild(divide)
     let dogImage = document.createElement("img")
     dogImage.src = imgUrl
-<<<<<<< HEAD
     dogImage.style.width = '100px'
-=======
-    dogImage.style.width = '500px'
->>>>>>> 68c534817da880ad79c8d60250375ebe43769d92
     divide.appendChild(dogImage)
 }
 
