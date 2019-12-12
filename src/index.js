@@ -75,15 +75,12 @@ function addDropdownListener() {
 function filterList(event) {
   const letter = event.target.value
   let list = document.getElementById("dog-breeds")
-  let lis = list.children
 
-  let liArray = Array.from(lis)
+  let liArray = Array.from(list.children)
+  // let liArray = lis
 
-  debugger
 
   goodElements = liArray.filter(li => li.innerText.charAt(0) === letter)
-
-  debugger
 
   badElements = liArray.filter(li => li.innerText.charAt(0) !== letter)
 
@@ -94,54 +91,4 @@ function filterList(event) {
   badElements.forEach ( li => {
     li.style.display = "none"
   })
-
-
-  debugger
-
-
-
-  // i = 0
-  // while (i < lis.length) {
-  //   lis[i].style.visibility = "visible"
-  //
-  //   if (lis[i].innerText.charAt(0) !== letter && lis[i].style.visibility !== "hidden") {
-  //     lis[i].style.visibility = "hidden"
-  //     lis[i].parentNode.appendChild(lis[i])
-  //   }
-  //   else if (lis[i].innerText.charAt(0) === letter)
-  //     { lis[i].style.visibility = "visible"
-  //     i++
-  //   } else {
-  //   i++
-  //   }
-  // }
-}
-
-  // for (let i = 0; i < lis.length; i++) {
-  //   lis[i].style.visibility = "visible"
-  //   if (lis[i].innerText.charAt(0) !== letter) {
-  //     lis[i].style.visibility = "hidden"
-  //     lis[i].parentNode.appendChild(lis[i])
-  //     // i--
-  //   } else
-  //   { lis[i].style.visibility = "visible" }
-  // }
-
-let tempArray = []
-
-function filterList2(event) {
-  const letter = event.target.value
-  let list = document.getElementById("dog-breeds")
-  let lis = list.children
-
-  for (let i = 0; i < lis.length; i++) {
-    // lis[i].style.visibility = "visible"
-    list.push(tempArray)
-
-    if (lis[i].innerText.charAt(0) !== letter) {
-      tempArray.push(lis[i])
-      lis[i].remove()
-    }
-  debugger
-  }
 }
