@@ -2,28 +2,51 @@
 const imgUrl = "https://dog.ceo/api/breeds/image/random/4"
 const breedUrl = 'https://dog.ceo/api/breeds/list/all'
 document.addEventListener("DOMContentLoaded",function(){
-    
     let dropDown = document.getElementById("breed-dropdown")
-    dropDown.addEventListener("change", filterBreed)
-    
     fetchPictures();
     fetchBreed();
     
+    dropDown.addEventListener("change", filterBreed)
     
 })
 
+// function filterDogNames(event){
+  
+    
+//    console.log("afewf")
+//    //get all Brred
+//     const getSelectDown = document.querySelector("#breed-dropdown").value
+//    const allDogBreed = document.querySelector("#dog-breeds").querySelectorAll("li")
+// //    document.querySelector("#dog-breeds").remove()
+//    let array = []
+//    for(let i = 0; i < allDogBreed.length; i++){
+//         array.push(allDogBreed[i].innerText)
+//    }
+//    const result = array.filter(x => x.charAt(0) === getSelectDown)
+//    return result
+// }
 function filterBreed(event){
+    let ulEl = document.getElementsByClassName("#dog-breeds")
     let dd = document.getElementById("breed-dropdown")
     let input = dd.value
     console.log(input)
-
     // pull the full list of dog breeds
-   let fullList = document.getElementsByTagName("li")
-    debugger
-    let filtered = fullList.filter(breed => breed.indexOf(input) === 0)
+    let fullList = document.getElementsByTagName("li")
+    let fullName = [ ]
+    for( var i = 0 ; i < fullList.length ; i ++){
+        let name = fullList[i] = fullList[i].innerText
+        fullName.push(name) }
+    let filtered = fullName.filter(breed => breed.indexOf(input) === 0)
     console.log(filtered)
-    debugger
+    for(var i = 0; i < filtered.length; i++){
+    //  document.getElementsByTagName("li").remove()
+        ulEl.parentNode.removeChild
+    }
+    filtered.forEach((breed) => {
+        listBreed(breed)
+    })
 }
+
 
 function renderDog(imgUrl){
     let container = document.getElementById("dog-image-container")
@@ -31,7 +54,7 @@ function renderDog(imgUrl){
     container.appendChild(divide)
     let dogImage = document.createElement("img")
     dogImage.src = imgUrl
-    dogImage.style.width = '100'
+    dogImage.style.width = '100px'
     divide.appendChild(dogImage)
 }
 
